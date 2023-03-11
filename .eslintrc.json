@@ -1,0 +1,49 @@
+{
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "jsdoc": {
+            "mode": "closure"
+        }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "globals": {
+    },
+    "rules": {
+		"quotes": [1, "single"],
+		"react/prop-types": [ 1, { "skipUndeclared": true } ],
+        "prettier/prettier": "off",
+        "jsdoc/check-line-alignment": "off",
+        "jsdoc/valid-types": "off",
+        "jsdoc/require-property-description": "off",
+        "@wordpress/i18n-translator-comments": "off",
+		"no-shadow": "error",
+		"no-use-before-define": "error",
+        "no-console": "off", // Build process removes all console calls.
+        "dot-notation": "off",   // Obfuscator or deflector may change the variable name if it's not strictly set.
+        "jsdoc/check-tag-names": "off",  // Templates use some tag names that cause errors for now reason, for example: @returns should be @return
+        "jest/expect-expect": "off"
+    }
+}

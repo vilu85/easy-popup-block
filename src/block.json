@@ -1,0 +1,97 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "epb/easy-popup-block",
+	"version": "0.1.0",
+	"title": "Easy customizable popup block",
+	"category": "design",
+	"icon": "<svg height=\"24\" viewBox=\"0 0 24 24\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"m21.964844 1.3730469a.3614845.3614845 0 0 0 -.236328.1054687.3614845.3614845 0 0 0 0 .5117188l.572265.5722656-.572265.5742188a.3614845.3614845 0 0 0 0 .5117187.3614845.3614845 0 0 0 .509765 0l.574219-.5742187.574219.5742187a.36183987.36183987 0 0 0 .511719-.5117187l-.574219-.5742188.574219-.5722656a.3618399.3618399 0 0 0 -.511719-.5117188l-.574219.5742188-.574219-.5742188a.3614845.3614845 0 0 0 -.273437-.1054687zm-15.4511721.7382812a.45286626.45286626 0 0 0 -.453125.4511719v10.867188a.45286626.45286626 0 0 0 .453125.453124h16.2988281a.45286626.45286626 0 0 0 .453125-.453124v-9.0527349h-.90625v8.5996089h-15.3925781v-9.9589839h14.0312501v-.90625zm-5.2128907 13.1171879c-.7137822 0-1.3007812.589793-1.3007812 1.302734v4.640625c0 .71294.5878404 1.300781 1.3007812 1.300781h10.9804688c.712941 0 1.300781-.587841 1.300781-1.300781v-2.273437h-.904297v2.273437c0 .227681-.168802.394531-.396484.394531h-10.9804688c-.2276811 0-.39648434-.166851-.39648432-.394531v-4.640625c0-.227681.16964482-.398437.39648432-.398438h8.9863278v-.904296zm9.6582028 0v.904296h1.34375l-2.6855465 2.09375.6699215.671876 2.390625-2.015626v1.34375h.904297v-1.34375-.75-.904296z\" fill-rule=\"evenodd\"/></svg>",
+	"description": "Create easily customizable popups for WordPress pages.",
+	"attributes": {
+		"minWidth": {
+			"type": "string"
+		},
+		"width": {
+			"type": "string"
+		},
+		"maxWidth": {
+			"type": "string"
+		},
+		"minHeight": {
+			"type": "string"
+		},
+		"height": {
+			"type": "string"
+		},
+		"maxHeight": {
+			"type": "string"
+		},
+		"customCss": {
+			"type": "string"
+		},
+		"buttonStyle": {
+			"type": "string"
+		},
+		"modalStyle": {
+			"type": "string"
+		},
+		"overlayStyle": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"align": ["wide", "full"],
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true,
+				"link": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true,
+			"__experimentalDefaultControls": {
+				"margin": true,
+				"padding": true,
+				"blockGap": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"fontAppearance": true,
+				"textTransform": true
+			}
+		}
+	},
+	"textdomain": "easy-popup-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
