@@ -1,5 +1,7 @@
-# Easy Popup Block README.md
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+# Important notice! This doesn't work yet and is in early development stage.
+
+# (WIP) Easy Popup Block README.md
+![Version](https://img.shields.io/badge/version-1.0.0+build1-gray.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/vilu85/easy-popup-block#readme)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/vilu85/easy-popup-block/graphs/commit-activity)
 [![License: GPL--2.0--or--later](https://img.shields.io/github/license/vilu85/easy-popup-block)](https://www.gnu.org/licenses/gpl-2.0.html)

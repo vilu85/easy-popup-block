@@ -1,0 +1,40 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+$base-index: 99999 !default;
+
+// Show popup button
+.wp-block-epb-easy-popup-block {
+
+}
+
+.epb-easy-popup-block-size-controls {
+	width: 100%;
+
+	.components-base-control__field {
+		.components-panel__row {
+			.component-box-control__header {
+				justify-content: start;
+			}
+		}
+	}
+}
+
+.epb-easy-popup-block-modal-position {
+	width: 100%;
+}
+
+.epb-popup {
+	.epb-modal-wrapper {
+		.components-resizable-box__container {
+			z-index: $base-index + 1;
+
+			.epb-modal-body {
+				z-index: $base-index + 2;
+				position: relative;
+			}
+		}
+
+		z-index: 10;
+	}
+}

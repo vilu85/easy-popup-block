@@ -11,8 +11,7 @@ const customConfig = {
 		new VersionAutoPatchPlugin({
 			disabled: isProduction,
 			type: 'build'
-		})
+		}),
 	]
 };
-
 module.exports = customConfig;
