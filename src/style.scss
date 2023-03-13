@@ -1,0 +1,107 @@
+$base-index: 99999 !default;
+
+$modalPositions: (
+	"absolute",
+	"fixed",
+	"relative",
+	"sticky"
+);
+
+.wp-block-epb-easy-popup-block {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+.epb-popup {
+	.epb-popup-wrapper {
+		display: none;
+	}
+
+	&[data-isopen="true"] {
+		.epb-popup-wrapper {
+			display: block;
+		}
+	}
+
+	.epb-modal-overlay {
+		background-color: rgba(0, 0, 0, 0.8);
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: $base-index - 1;
+	}
+
+	.epb-modal-wrapper {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		left: 0;
+		bottom: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: $base-index;
+
+		@each $modalPosition in $modalPositions {
+			&[data-position="#{nth($modalPosition, 1)}"] {
+				position: #{nth($modalPosition, 1)};
+			}
+		}
+	}
+
+	.epb-modal-content {
+		background-color: #fff;
+		max-width: 100%;
+		padding: 20px;
+		position: relative;
+		z-index: $base-index + 1;
+	}
+
+	.epb-modal-body {
+		max-height: 75vh;
+		overflow: auto;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		>* {
+			margin: 0 auto;
+			max-width: 100%;
+		}
+	}
+
+	button.epb-popup-close-btn {
+		background-color: transparent !important;
+		border: none;
+		cursor: pointer;
+		display: block;
+		height: auto !important;
+		line-height: 1;
+		padding: 0 !important;
+		position: absolute;
+		right: 4px;
+		top: 0px;
+
+		&[data-closebtn-variant="corner"] {
+			right: calc(var(--closebtnsize) / -2);
+			top: calc(var(--closebtnsize) / -2);
+		}
+
+		&:hover {
+			opacity: .75;
+		}
+
+		&:focus {
+			border: none !important;
+			outline: none;
+		}
+
+		>span {
+			font-size: var(--closebtnsize);
+		}
+	}
+}
