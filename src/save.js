@@ -47,7 +47,12 @@ export default function save( props ) {
 		maxHeight,
 		backgroundColor: modalSolidBg,
 		background: modalGradientBg,
-		border
+	}
+
+	if(border) {
+		modalStyle['--epb-modal-border-color'] = border?.color;
+		modalStyle['--epb-modal-border-style'] = border?.style,
+		modalStyle['--epb-modal-border-width'] = border?.width
 	}
 
 	const overlayStyle = {

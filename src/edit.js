@@ -59,12 +59,17 @@ export default function Edit( props ) {
 		maxHeight,
 		backgroundColor: modalSolidBg,
 		background: modalGradientBg,
-		border
 	}
 
 	const overlayStyle = {
 		backgroundColor: overlaySolidBg,
 		background: overlayGradientBg
+	}
+
+	if(border) {
+		modalStyle['--epb-modal-border-color'] = border?.color;
+		modalStyle['--epb-modal-border-style'] = border?.style,
+		modalStyle['--epb-modal-border-width'] = border?.width
 	}
 
 	let sanitizedCustomCss;

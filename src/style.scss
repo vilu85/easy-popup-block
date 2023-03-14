@@ -58,6 +58,7 @@ $modalPositions: (
 		padding: 20px;
 		position: relative;
 		z-index: $base-index + 1;
+		border: var(--epb-modal-border-width) var(--epb-modal-border-style) var(--epb-modal-border-color);
 	}
 
 	.epb-modal-body {

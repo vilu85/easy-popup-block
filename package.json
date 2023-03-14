@@ -1,38 +1,38 @@
 {
-  "name": "easy-popup-block",
-  "version": "1.0.0+build223",
-  "description": "Create easily customizable popups for WordPress pages.",
-  "author": "Ville Perkkio",
-  "homepage": "https://github.com/vilu85/easy-popup-block",
-  "license": "GPL-2.0-or-later",
-  "keywords": [
-    "popup",
-    "block",
-    "modal",
-    "blockeditor",
-    "Gutenberg",
-    "WordPress"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vilu85/easy-popup-block.git"
-  },
-  "bugs": {
-    "url": "https://github.com/vilu85/easy-popup-block/issues"
-  },
-  "main": "build/index.js",
-  "scripts": {
-    "build": "wp-scripts build",
-    "format": "wp-scripts format",
-    "lint:css": "wp-scripts lint-style",
-    "lint:js": "wp-scripts lint-js",
-    "packages-update": "wp-scripts packages-update",
-    "plugin-zip": "wp-scripts plugin-zip",
-    "start": "wp-scripts start"
-  },
-  "devDependencies": {
-    "@wordpress/scripts": "^25.5.1",
-    "banner-plugin": "file:../banner-plugin-0.1.0.tgz",
-    "version-auto-patch": "^1.2.0"
-  }
+	"name": "easy-popup-block",
+	"version": "1.0.0+build224",
+	"description": "Create easily customizable popups for WordPress pages.",
+	"author": "Ville Perkkio",
+	"homepage": "https://github.com/vilu85/easy-popup-block",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"popup",
+		"block",
+		"modal",
+		"blockeditor",
+		"Gutenberg",
+		"WordPress"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vilu85/easy-popup-block.git"
+	},
+	"bugs": {
+		"url": "https://github.com/vilu85/easy-popup-block/issues"
+	},
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^25.5.1",
+		"banner-plugin": "file:../banner-plugin-0.1.0.tgz",
+		"version-auto-patch": "^1.2.1"
+	}
 }
