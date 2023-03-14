@@ -49,7 +49,8 @@ export default function Edit( props ) {
 		color: closeBtnColor
 	};
 
-	const [previewing, setPreviewing] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isModalLockedOpen, setIsModalLockedOpen] = useState(false);
 
 	const modalStyle = {
 		minWidth,
@@ -79,12 +80,14 @@ export default function Edit( props ) {
 		sanitizedCustomCss = customCss.replace(/(<([^>]+)>)/gi, '');
 	}
 
-	const togglePreview = (e) => {
-		e.preventDefault();
-		setPreviewing(!previewing);
+	const toggleModal = (e) => {
+		if(!isModalLockedOpen) {
+			e.preventDefault();
+			setIsModalOpen(!isModalOpen);
+		}
 	}
 
-	const toggleSelection = ( isSelected ) => {
+	const setThisSelected = ( isSelected ) => {
 		if(isSelected) {
 			dispatch( 'core/block-editor' ).selectBlock( clientId );
 		}
@@ -93,6 +96,10 @@ export default function Edit( props ) {
 	return (
 		<>
 			<InspectorControls >
+				<PanelRow>
+					<Button variant='secondary' onClick={ () => { setIsModalLockedOpen(true); setIsModalOpen( true ) } }>{ __( 'Open modal', 'easy-popup-block') }</Button>
+					<Button variant='secondary' onClick={ () => { setIsModalLockedOpen(false); setIsModalOpen( false ) } }>{ __( 'Close modal', 'easy-popup-block') }</Button>
+				</PanelRow>
 				<PanelBody title={ __( 'Modal size and position', 'easy-popup-block' ) } initialOpen={ true }>
 					<PanelRow>
 						<ModalSizeControls label={ __( 'Width and height', 'easy-popup-block' ) } size={ { width, height } } onChange={ (newSize) => setAttributes( { width: newSize.width, height: newSize.height } )} />
@@ -190,70 +197,60 @@ export default function Edit( props ) {
 				</PanelBody>
 			</InspectorControls>
 
-			<div className="epb-popup">
-				<div className="epb-popup-preview">
-					<Button
-						variant="primary"
-						onClick={togglePreview}
-						{ ...useBlockProps() }
+			{sanitizedCustomCss && (
+				<style>{sanitizedCustomCss}</style>
+			)}
+			<div className='epb-modal'>
+			<Button
+				variant="primary"
+				onClick={toggleModal}
+				{ ...useBlockProps() }
+			>
+				{ buttonText ? buttonText : __('Show Popup', 'easy-popup-block') }
+			</Button>
+			{isModalOpen && (
+				<div className="epb-modal-wrapper" style={overlayStyle} onClick={toggleModal} data-position={ position }>
+					<ResizableBox
+						minHeight="50"
+						minWidth="50"
+						enable={ {
+							top: true,
+							right: true,
+							bottom: true,
+							left: true,
+							topRight: false,
+							bottomRight: false,
+							bottomLeft: false,
+							topLeft: false,
+						} }
+						showHandle={ true }
+						onResizeStop={ ( event, direction, elt, delta ) => {
+							setAttributes( {
+								height: `${parseInt(height) + delta.height}px`,
+								width: `${parseInt(width) + delta.width}px`,
+							} );
+							setThisSelected( true );
+						} }
+						onResizeStart={ () => {
+							setThisSelected( false );
+						} }
 					>
-						{ buttonText ? buttonText : __('Show Popup', 'easy-popup-block') }
-					</Button>
-				</div>
-				{previewing && (
-					<div className="epb-modal-wrapper" data-position={ position }>
-						{sanitizedCustomCss && (
-							<style>{sanitizedCustomCss}</style>
-						)}
-						<div
-							style={overlayStyle}
-							role="presentation"
-							className="epb-modal-overlay"
-							onClick={togglePreview}
-						/>
-						<ResizableBox
-							minHeight="50"
-							minWidth="50"
-							enable={ {
-								top: true,
-								right: true,
-								bottom: true,
-								left: true,
-								topRight: false,
-								bottomRight: false,
-								bottomLeft: false,
-								topLeft: false,
-							} }
-							showHandle={ true }
-							onResizeStop={ ( event, direction, elt, delta ) => {
-								setAttributes( {
-									height: `${parseInt(height) + delta.height}px`,
-									width: `${parseInt(width) + delta.width}px`,
-								} );
-								toggleSelection( true );
-							} }
-							onResizeStart={ () => {
-								toggleSelection( false );
-							} }
-						>
 						<div className="epb-modal-content" style={modalStyle}>
 							{isCloseBtnVisible && (
 								<button
 									className="epb-popup-close-btn"
 									style={closeBtnStyle}
-									onClick={togglePreview}
+									onClick={toggleModal}
 									data-closebtn-variant={ closeBtnVariant }
 								>
 									<span>✕</span>
 								</button>
 							)}
-							<div className="epb-modal-body">
-								<InnerBlocks />
-							</div>
+							<InnerBlocks />
 						</div>
-						</ResizableBox>
-					</div>
-				)}
+					</ResizableBox>
+				</div>
+			)}
 			</div>
 		</>
 	);

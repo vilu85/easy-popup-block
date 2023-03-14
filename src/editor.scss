@@ -1,7 +1,7 @@
 /**
  * The following styles get applied inside the editor only.
  */
-$base-index: 99999 !default;
+$base-index: 99990 !default;
 
 // Show popup button
 .wp-block-epb-easy-popup-block {
@@ -24,12 +24,17 @@ $base-index: 99999 !default;
 	width: 100%;
 }
 
-.epb-popup {
+.epb-modal {
 	.epb-modal-wrapper {
+		display: flex;
+		position: fixed;
+		min-width: 100%;
+		min-height: 100%;
+
 		.components-resizable-box__container {
 			z-index: $base-index + 1;
 
-			.epb-modal-body {
+			.epb-modal-content {
 				z-index: $base-index + 2;
 				position: relative;
 			}

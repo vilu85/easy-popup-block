@@ -1,22 +1,23 @@
 import domReady from '@wordpress/dom-ready';
 
 domReady(() => {
-	class PopupListeners {
+	class ModalListener {
 		constructor(element) {
 			this.element = element;
 			this.hasOpened = false;
+			this.openBtn = element.querySelector('input[type="button"].wp-block-epb-easy-popup-block');
 			this.closeBtn = element.querySelector('.epb-modal-content > button');
-			this.overlay = element.querySelector('.epb-modal-overlay');
+			this.overlay = element.querySelector('.epb-modal-wrapper');
 
-			this.element.addEventListener('click', this.handleDocumentClick);
+			this.element.addEventListener('click', this.handleElementClick);
 		}
 
-		handleDocumentClick = (event) => {
-			if (event.target.matches('.epb-popup input[type="button"]')) {
+		handleElementClick = (event) => {
+			if (event.target === this.openBtn) {
 				event.preventDefault();
 				this.openPopup();
 			} else if (
-				event.target.closest('.epb-popup-close-btn') !== null ||
+				event.target === this.closeBtn || event.target.closest('.epb-modal-content > button') !== null ||
 				event.target === this.overlay
 			) {
 				this.closePopup();
@@ -24,22 +25,22 @@ domReady(() => {
 		};
 
 		openPopup() {
-			this.element.dataset.isopen = true;
+			this.overlay.dataset.isopen = true;
 			this.hasOpened = true;
 		}
 
 		closePopup() {
-			this.element.dataset.isopen = false;
+			this.overlay.dataset.isopen = false;
 		}
 	}
 
-	const popups = document.querySelectorAll('.epb-popup');
+	const popups = document.querySelectorAll('.epb-modal');
 
 	if (!popups.length) {
 		return;
 	}
 
 	popups.forEach((block) => {
-		new PopupListeners(block);
+		new ModalListener(block);
 	});
 });

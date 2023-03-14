@@ -68,21 +68,13 @@ export default function save( props ) {
 	}
 
 	return (
-		<div
-			className="epb-popup"
-			data-isopen="false"
-		>
-			{isOpenBtnVisible && (
-				<input type="button" value={ buttonText ? buttonText : __('Show Popup', 'easy-popup-block') } { ...useBlockProps.save() } />
-			)}
-			<div className="epb-popup-wrapper">
-				<div className="epb-modal-wrapper" data-position={ position } >
-					{sanitizedCustomCss && <style>{sanitizedCustomCss}</style>}
-					<div
-						role="presentation"
-						className="epb-modal-overlay"
-						style={ overlayStyle }
-					/>
+		<>
+		{sanitizedCustomCss && <style>{sanitizedCustomCss}</style>}
+		<div className='epb-modal'>
+		{isOpenBtnVisible && (
+			<input type="button" value={ buttonText ? buttonText : __('Show Popup', 'easy-popup-block') } { ...useBlockProps.save() } />
+		) }
+			<div className="epb-modal-wrapper" style={overlayStyle} data-position={ position } data-isopen="false">
 					<div className="epb-modal-content" style={modalStyle}>
 						{isCloseBtnVisible && (
 							<button
@@ -93,12 +85,10 @@ export default function save( props ) {
 								<span>✕</span>
 							</button>
 						)}
-						<div className="epb-modal-body">
-							<InnerBlocks.Content />
-						</div>
+						<InnerBlocks.Content />
 					</div>
-				</div>
 			</div>
 		</div>
+		</>
 	);
 }
