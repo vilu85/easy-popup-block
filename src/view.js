@@ -8,7 +8,7 @@ domReady(() => {
 			this.closeBtn = element.querySelector('.epb-modal-content > button');
 			this.overlay = element.querySelector('.epb-modal-overlay');
 
-			document.addEventListener('click', this.handleDocumentClick);
+			this.element.addEventListener('click', this.handleDocumentClick);
 		}
 
 		handleDocumentClick = (event) => {

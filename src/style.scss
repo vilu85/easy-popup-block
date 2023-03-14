@@ -28,7 +28,7 @@ $modalPositions: (
 		background-color: rgba(0, 0, 0, 0.8);
 		bottom: 0;
 		left: 0;
-		position: absolute;
+		position: fixed;
 		right: 0;
 		top: 0;
 		z-index: $base-index - 1;

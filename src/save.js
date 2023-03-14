@@ -27,7 +27,8 @@ export default function save( props ) {
 		overlayGradientBg,
 		closeBtnSize,
 		closeBtnColor,
-		closeBtnVariant
+		closeBtnVariant,
+		buttonText
 	} = attributes;
 
 	const isCloseBtnVisible = true;	//TODO: Move to attributes
@@ -72,7 +73,7 @@ export default function save( props ) {
 			data-isopen="false"
 		>
 			{isOpenBtnVisible && (
-				<input type="button" value={__('Show Popup', 'epb-popup')} { ...useBlockProps.save() } />
+				<input type="button" value={ buttonText ? buttonText : __('Show Popup', 'easy-popup-block') } { ...useBlockProps.save() } />
 			)}
 			<div className="epb-popup-wrapper">
 				<div className="epb-modal-wrapper" data-position={ position } >

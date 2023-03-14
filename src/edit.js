@@ -8,7 +8,7 @@ import {
 } from '@wordpress/block-editor';
 import { __experimentalBorderControl as BorderControl, ResizableBox  } from '@wordpress/components';
 import { useBlockProps, InnerBlocks, InspectorControls  } from '@wordpress/block-editor';
-import { __experimentalBoxControl as BoxControl, BaseControl, PanelBody, Button, PanelRow, TextareaControl, RangeControl, ToggleControl  } from '@wordpress/components';
+import { __experimentalBoxControl as BoxControl, BaseControl, PanelBody, Button, PanelRow, TextareaControl, RangeControl, ToggleControl, TextControl  } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { SelectControl } from '@wordpress/components';
 import { dispatch } from '@wordpress/data';
@@ -39,6 +39,7 @@ export default function Edit( props ) {
 		closeBtnSize,
 		closeBtnColor,
 		closeBtnVariant,
+		buttonText
 	} = attributes;
 
 	const isCloseBtnVisible = true;	//TODO: Move to attributes
@@ -181,6 +182,12 @@ export default function Edit( props ) {
 						onColorChange={ (value) => setAttributes( { overlaySolidBg: value })}
 					/>
 				</PanelBody>
+				<PanelBody>
+					<TextControl
+						label={ __( 'Button text', 'easy-popup-block' ) }
+						onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+					/>
+				</PanelBody>
 			</InspectorControls>
 
 			<div className="epb-popup">
@@ -190,7 +197,7 @@ export default function Edit( props ) {
 						onClick={togglePreview}
 						{ ...useBlockProps() }
 					>
-						{__('Show Popup', 'easy-popup-block')}
+						{ buttonText ? buttonText : __('Show Popup', 'easy-popup-block') }
 					</Button>
 				</div>
 				{previewing && (

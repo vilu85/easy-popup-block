@@ -9,9 +9,10 @@ const customConfig = {
 		...defaultConfig.plugins,
 		new BannerPlugin( { disabled: ! isProduction } ),
 		new VersionAutoPatchPlugin({
-			disabled: isProduction,
+			disabled: true,	//TODO: disabled for now: copy-webpack-plugin configuration issue causes an infinite loop.
 			type: 'build'
 		}),
 	]
 };
+
 module.exports = customConfig;
